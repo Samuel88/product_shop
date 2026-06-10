@@ -1,9 +1,22 @@
-function index(request, response) {
-    response.json({});
+import db from '../db/connection.js';
+
+async function index(request, response) {
+    const [products] = await db.query('SELECT * FROM products');
+
+    response.json(products);
 }
 
-function show(request, response) {
-    response.json({});
+async function show(request, response) {
+    const [products] = await db.query(
+        'SELECT * FROM products WHERE id = ?',
+        [request.params.id]
+    );
+
+    if (products.length === 0) {
+        return response.status(404).json({ error: 'Prodotto non trovato' });
+    }
+
+    response.json(products[0]);
 }
 
 export {

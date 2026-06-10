@@ -1,9 +1,22 @@
-function index(request, response) {
-    response.json({});
+import db from '../db/connection.js';
+
+async function index(request, response) {
+    const [categories] = await db.query('SELECT * FROM categories');
+
+    response.json(categories);
 }
 
-function show(request, response) {
-    response.json({});
+async function show(request, response) {
+    const [categories] = await db.query(
+        'SELECT * FROM categories WHERE id = ?',
+        [request.params.id]
+    );
+
+    if (categories.length === 0) {
+        return response.status(404).json({ error: 'Categoria non trovata' });
+    }
+
+    response.json(categories[0]);
 }
 
 export {
