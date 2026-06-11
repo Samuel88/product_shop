@@ -19,7 +19,21 @@ async function show(request, response) {
     response.json(categories[0]);
 }
 
+async function destroy(request, response) {
+    const [result] = await db.query(
+        'DELETE FROM categories WHERE id = ?',
+        [request.params.id]
+    );
+
+    if (result.affectedRows === 0) {
+        return response.status(404).json({ error: 'Categoria non trovata' });
+    }
+
+    response.status(204).send();
+}
+
 export {
     index,
-    show
+    show,
+    destroy
 }
