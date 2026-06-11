@@ -29,7 +29,7 @@ async function destroy(request, response) {
         return response.status(404).json({ error: 'Categoria non trovata' });
     }
 
-    response.status(204).send();
+    response.json({ message: 'Categoria eliminata' });
 }
 
 export {

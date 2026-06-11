@@ -19,7 +19,21 @@ async function show(request, response) {
     response.json(products[0]);
 }
 
+async function destroy(request, response) {
+    const [result] = await db.query(
+        'DELETE FROM products WHERE id = ?',
+        [request.params.id]
+    );
+
+    if (result.affectedRows === 0) {
+        return response.status(404).json({ error: 'Prodotto non trovato' });
+    }
+
+    response.json({ message: 'Prodotto eliminato' });
+}
+
 export {
     index,
-    show
+    show,
+    destroy
 }

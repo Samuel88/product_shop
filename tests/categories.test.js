@@ -36,4 +36,28 @@ describe('API /categories', () => {
         const response = await fetch(`${baseUrl}/categories/1/rotta-inesistente`);
         expect(response.status).toBe(404);
     });
+
+    // Test DELETE
+
+    it("DELETE /categories/:id con id esistente risponde 200", async () => {
+        // Assume category with id 1 exists from seed data.
+        const response = await fetch(`${baseUrl}/categories/1`, {
+            method: "DELETE"
+        });
+        expect(response.status).toBe(200);
+    });
+
+    it("DELETE /categories/:id con id inesistente risponde 404", async () => {
+        const response = await fetch(`${baseUrl}/categories/999999`, {
+            method: "DELETE"
+        });
+        expect(response.status).toBe(404);
+    });
+
+    it("DELETE /categories/:id con id non numerico risponde 404", async () => {
+        const response = await fetch(`${baseUrl}/categories/abc`, {
+            method: "DELETE"
+        });
+        expect(response.status).toBe(404);
+    });
 });
