@@ -2,7 +2,7 @@ import { ChatOpenAI } from "@langchain/openai";
 import { createAgent, HumanMessage } from 'langchain'
 
 const model = new ChatOpenAI({
-    apiKey: "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",
+    apiKey: "",
     configuration: {
         baseURL: "https://integrate.api.nvidia.com/v1",
     },
