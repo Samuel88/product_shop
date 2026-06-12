@@ -20,8 +20,12 @@
   },
   "type": "module",
   "dependencies": {
+    "@langchain/openai": "^1.4.7",
+    "@langchain/openrouter": "^0.3.0",
     "express": "^5.2.1",
-    "mysql2": "^3.22.5"
+    "langchain": "^1.4.4",
+    "mysql2": "^3.22.5",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "vitest": "^4.1.8"
