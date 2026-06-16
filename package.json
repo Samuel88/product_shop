@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node --env-file=.env server.js",
     "watch": "node --env-file=.env --watch server.js",
-    "test": "vitest"
+    "test": "vitest",
+    "agent-call": "node --env-file=.env agent-call.js"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +21,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@langchain/anthropic": "^1.4.1",
     "@langchain/openai": "^1.4.7",
     "@langchain/openrouter": "^0.3.0",
     "express": "^5.2.1",
